@@ -1,31 +1,99 @@
-<form id="grievanceForm">
-  <label for="name">Your Name</label>
-  <input type="text" id="name" name="name" placeholder="What's your name?" required>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Umam's Grievance Portal</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap');
 
-  <label for="message">Your Complaint</label>
-  <textarea id="message" name="message" rows="5" placeholder="Write your concern here..." required></textarea>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #ffe0ec, #ffc0cb);
+      font-family: 'Quicksand', sans-serif;
+    }
 
-  <button type="submit">Submit Grievance 💌</button>
-</form>
+    .container {
+      max-width: 480px;
+      margin: 60px auto;
+      background-color: #fff0f6;
+      padding: 40px;
+      border-radius: 25px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+      animation: fadeIn 1s ease-in-out;
+    }
 
-<div class="heart" id="thankYouMessage" style="display:none;">
-  💖 Thank you, gorgeous! Your voice has been heard.
-</div>
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
 
-<script>
-  document.getElementById('grievanceForm').addEventListener('submit', async function (e) {
-    e.preventDefault();
+    h1 {
+      text-align: center;
+      color: #d6336c;
+      margin-bottom: 25px;
+      font-size: 28px;
+    }
 
-    const name = document.getElementById('name').value;
-    const message = document.getElementById('message').value;
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+      color: #cc1f5d;
+    }
 
-    await fetch('/submit', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ name, message })
-    });
+    input, textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #f7a7bc;
+      border-radius: 12px;
+      margin-bottom: 20px;
+      font-size: 15px;
+      background-color: #fff5f9;
+    }
 
-    document.getElementById('grievanceForm').reset();
-    document.getElementById('thankYouMessage').style.display = 'block';
-  });
-</script>
+    input::placeholder, textarea::placeholder {
+      color: #b35d7a;
+    }
+
+    button {
+      width: 100%;
+      background-color: #ff69b4;
+      color: white;
+      border: none;
+      padding: 14px;
+      font-size: 16px;
+      border-radius: 15px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #e055a1;
+    }
+
+    .heart {
+      text-align: center;
+      font-size: 22px;
+      color: #ff85a2;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🌸 Umam's Grievance Portal 🌸</h1>
+    <form>
+      <label for="name">Your Name</label>
+      <input type="text" id="name" name="name" placeholder="What's your name?" required>
+
+      <label for="message">Your Complaint</label>
+      <textarea id="message" name="message" rows="5" placeholder="Write your concern here..." required></textarea>
+
+      <button type="submit">Submit Grievance 💌</button>
+    </form>
+    <div class="heart">Made with 💖 for your voice to be heard</div>
+  </div>
+</body>
+</html>
